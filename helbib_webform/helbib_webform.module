@@ -4,7 +4,7 @@
 /**
  * Implements hook_install 
  */
-function helbib_install() {
+function helbib_webform_install() {
   // WE really want webform to be enabled
   drupal_install_modules(array('webform'));
   variable_set('webform_node_types', array(
