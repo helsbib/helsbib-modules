@@ -1,0 +1,7 @@
+name = Helbib webform 
+description = export webforms between setups
+core = 6.x
+php = 5.x
+package = Helbib
+
+dependencies[] = webform

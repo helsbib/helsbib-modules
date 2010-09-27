@@ -1,0 +1,26 @@
+<?php
+// $Id$
+
+/**
+ * Install new webforms and node content
+ */
+function helbib_webform_update_6001() {
+  // Generate 'ris and ros' page with webform
+  _helbib_webform_content_import_nodes('risros');
+
+  // Generate 'bestil bibliotekar' page with webform
+  _helbib_webform_content_import_nodes('bestilbib');
+}
+
+
+/**
+ * Loads a node definition from a file, which generates a node in the system.
+ *
+ * @param String $filename - The filename of the node definition.
+ */
+function _helbib_webform_content_import_nodes($filename = '') {
+  $code = file_get_contents(drupal_get_path('module', 'helbib_webform') . '/nodes/' . $filename . '.export');
+
+  node_export_import($code, NULL, FALSE);
+}
+
