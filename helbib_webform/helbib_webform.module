@@ -2,9 +2,17 @@
 // $Id$
 
 /**
- * Install new webforms and node content
+ * Implements hook_install 
  */
-function helbib_webform_update_6001() {
+function helbib_install() {
+  // WE really want webform to be enabled
+  drupal_install_modules(array('webform'));
+  variable_set('webform_node_types', array(
+    'page',
+    'webform',
+  ));
+
+
   // Generate 'ris and ros' page with webform
   _helbib_webform_content_import_nodes('risros');
 
