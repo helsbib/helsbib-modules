@@ -1,0 +1,5 @@
+name = Helbib base module
+description = Module handles installing, updating and various tasks for custom modules
+core = 6.x
+php = 5.x
+package = Helbib

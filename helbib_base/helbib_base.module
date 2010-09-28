@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * Installs and configure tinymce_node_picker module to be enabled on Full HTML 
+ * wysiwyg editors.
+ */
+function helbib_base_update_6001() {
+
+  // Install the tinymce node picker module
+  drupal_install_modules(array('tinymce_node_picker'));
+
+  $result = db_query("SELECT w.settings, f.format FROM {wysiwyg} AS w LEFT JOIN {filter_formats} f ON f.format = w.format WHERE f.name = 'Full HTML'");
+
+  $settings_obj = db_fetch_object($result);
+  $settings     = unserialize($settings_obj->settings);
+
+  if (!array_key_exists('nodepicker', $settings['buttons']['drupal'])) {
+    $settings['buttons']['drupal']['nodepicker'] = 1;
+    db_query("UPDATE {wysiwyg} SET settings = '%s' WHERE format = %d", serialize($settings), $settings_obj->format);
+
+    drupal_set_message(t('Wysiwyg profile for Full HTML has been saved.'));
+  }
+  
+}
+
+
