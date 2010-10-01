@@ -24,7 +24,7 @@ function helbib_base_update_6001() {
   $settings_obj = db_fetch_object($result);
   $settings     = unserialize($settings_obj->settings);
 
-  if (!array_key_exists('nodepicker', $settings['buttons']['drupal'])) {
+  if (!array_key_exists('drupal', $settings['buttons'])) {
     $settings['buttons']['drupal']['nodepicker'] = 1;
     db_query("UPDATE {wysiwyg} SET settings = '%s' WHERE format = %d", serialize($settings), $settings_obj->format);
 
