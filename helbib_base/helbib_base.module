@@ -11,6 +11,18 @@ function helbib_base_ctools_plugin_api() {
 }
 
 /**
+ * Implements hook_form_alter
+*/
+function helbib_base_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'views_exposed_form':
+      $form['library']['#options']['All'] = t('Biblioteker');
+      $form['submit']['#value']           = t('Vælg');
+    break;
+  }
+}
+
+/**
  * Installs and configure tinymce_node_picker module to be enabled on Full HTML 
  * wysiwyg editors.
  */
