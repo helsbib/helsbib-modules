@@ -44,3 +44,9 @@ function helbib_base_update_6001() {
   }
 }
 
+/**
+ * Install and enable helbib_profile_image module, which adds a profile image cck field to the profile 
+ */
+function helbib_base_update_6002() {
+  drupal_install_modules(array('helbib_profile_image'));
+}
