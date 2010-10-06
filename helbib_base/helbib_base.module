@@ -19,6 +19,10 @@ function helbib_base_form_alter(&$form, $form_state, $form_id) {
       $form['library']['#options']['All'] = t('Biblioteker');
       $form['submit']['#value']           = t('Vælg');
     break;
+    case 'ting_search_form':
+      $form['keys']['#title'] = t('Indtast søgeord...');
+      $form['keys']['#required'] = FALSE;
+    break;
   }
 }
 
