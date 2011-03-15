@@ -1,0 +1,15 @@
+name = Helbib Export kulturvaerftet
+description = Helbib Export kulturvaerftet
+core = 6.x
+
+dependencies[] = "features"
+dependencies[] = "ding_event"
+dependencies[] = "imagefield"
+dependencies[] = "optionwidgets"
+dependencies[] = "text"
+
+features[content][] = "event-field_category"
+features[content][] = "event-field_export_image"
+features[content][] = "event-field_facility"
+features[content][] = "event-field_targetgroup"
+package = "Helbib"

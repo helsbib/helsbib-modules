@@ -1,0 +1,57 @@
+<?php
+
+function helbib_kulturvaerft_export_requirements($phase){
+  $requirements=array();
+
+  if($phase=='runtime'){
+
+    $username=variable_get('helbib_kulturvaerft_export_username',false);
+    if (!$username) {
+     $requirements['helbib_kulturvaerft_export_username'] = array(
+        'title' => t('Kulturvaerft Export: Username'),
+        'value' => t('Not Found'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => t('The helbib_kulturvaerft_export module requires the helbib_kulturvaerft_export_username variable to be defined, in order to properly export calendar events'),
+      );    
+    }
+
+    $password=variable_get('helbib_kulturvaerft_export_password',false);
+    if (!$password) {
+     $requirements['helbib_kulturvaerft_export_password'] = array(
+        'title' => t('Kulturvaerft Export: Password'),
+        'value' => t('Not Found'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => t('The helbib_kulturvaerft_export module requires the helbib_kulturvaerft_export_password variable to be defined, in order to properly export calendar events'),
+      );
+    }
+
+    $service_url=variable_get('helbib_kulturvaerft_export_service_url',false);
+    if (!$service_url) {
+     $requirements['helbib_kulturvaerft_export_service_url'] = array(
+        'title' => t('Kulturvaerft Export: Service URL'),
+        'value' => t('Not Found'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => t('The helbib_kulturvaerft_export module requires the helbib_kulturvaerft_export_service_url variable to be defined, in order to properly export calendar events'),
+      );
+    }
+
+    $definitions_file=variable_get('helbib_kulturvaerft_export_definitions_file',false);
+    if (!$definitions_file) {
+     $requirements['helbib_kulturvaerft_export_definitions_file'] = array(
+        'title' => t('Kulturvaerft Export: Definitions File'),
+        'value' => t('Not Found'),
+        'severity' => REQUIREMENT_WARNING,
+        'description' => t('The helbib_kulturvaerft_export module requires the helbib_kulturvaerft_export_definitions_file variable to be defined, in order to properly export calendar events'),
+      );
+    }
+    if(!count($requirements)){
+      $requirements['ok'] = array(
+        'title' => t('Kulturvaerft Export'),
+        'value' => t('All variables defined'),
+        'severity' => REQUIREMENT_OK,
+      );
+    }
+  }
+
+  return $requirements;
+}

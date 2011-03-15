@@ -1,0 +1,177 @@
+<?php 
+
+function helbib_kulturvaerft_export_nodeapi(&$node, $op){
+  if($node->type=='event'){
+    $nodename='helsbib_'.$node->nid;
+    switch($op){
+      case 'update':
+      case 'insert':
+        //Setting up web service specific things
+        $service_url=variable_get('helbib_kulturvaerft_export_service_url',false);
+        $username=variable_get('helbib_kulturvaerft_export_username',false);
+        $password=variable_get('helbib_kulturvaerft_export_password',false);
+        if(!$service_url || !$username || !$password ){
+          watchdog('kv_export',t('Did not export this event, due to missing configuration. Nid: !nid'),array('!nid'=>$node->nid),WATCHDOG_WARNING);
+          drupal_set_message(t('Did not export this event, due to missing configuration'),'warning');
+          return;
+        }
+
+        //Setting up categories, groups, facilities
+        $targetGroupIDs=array();
+        foreach($node->field_targetgroup as $tg){
+          $targetGroupIDs[]=$tg['value'];
+        }
+        $facilityID=$node->field_facility[0]['value'];
+        $categoryID=$node->field_category[0]['value'];
+
+        //Setting up time specific things
+        $date=strtotime($node->field_datetime[0]['value']);
+        $endDate=strtotime($node->field_datetime[0]['value2']);
+
+        $doorsOpen=date('H:i',$date);
+
+        $durationSecs=$endDate-$date;
+        $durationHours=floor($durationSecs/3600);
+        $durationMins=floor(($durationSecs%3600)/60);
+        $durationSecs=floor($durationSecs%60);
+
+        $duration="$durationHours:$durationMins";
+        $date=date('Y-m-d\TH:i:s',$date);
+        $endDate=date('Y-m-d\TH:i:s',$endDate);
+
+        //Setting up link and image specific things
+        $ticketLink=url('node/'.$node->nid,array('absolute'=>true));
+        $organiserlink=$ticketLink;
+
+        if($node->field_export_image[0]['filepath']){
+          $image=$node->field_export_image[0]['filepath'];
+        }
+        else{
+          $image='';
+        }
+        $imageUrl=url($image,array('absolute'=>true));
+        
+        //Other trivial fields...
+        $price=$node->field_entry_price[0]['value'];
+        $shortDescription=$node->field_teaser[0]['value'];
+        $body=$node->body;
+        $title=$node->title;
+
+        $args= array(
+          'username'=> $username,// string username;
+          'password'=> $password,// string password;
+          'id'=> 0,// int id;
+          'nodeName'=> $nodename ,// string nodeName;
+          'title'=> $title ,// string title;
+          //'navigationTitle'=> 'navitationstitel' ,// string navigationTitle;
+          'date'=> $date ,// dateTime date; 
+          'endDate'=> $endDate ,// dateTime endDate;
+          'facilityID'=> $facilityID ,// int facilityID; 
+          'categoryID'=> $categoryID ,// int categoryID; 
+          'targetGroupIDs'=> $targetGroupIDs ,// ArrayOfInt targetGroupIDs;
+          'shortDescription'=> $shortDescription ,// string shortDescription; 
+          'introText'=> $shortDescription ,// string introText; 
+          'bodyText'=> $body ,// string bodyText; 
+          'preSalePrice'=> $price ,// string preSalePrice;   
+          'price'=> $price ,// string price; 
+          'ticketLink'=> $ticketLink ,// string ticketLink;  
+          'duration'=> $duration ,// string duration;
+          'intermission'=> false ,// boolean intermission;   
+          'doorsOpen'=> $doorsOpen ,// string doorsOpen;    //node->Fra-dato
+          'organiserLink'=> $organiserlink ,// string organiserLink;   
+          'eventInformation'=> $shortDescription ,// string eventInformation;  
+          //'times'=> 'times?!?' ,// string times;    
+          'imageUrl'=> $imageUrl // string imageUrl;
+        );
+        
+        $client=new SoapClient($service_url,array('trace'=>true));
+        //$client=new SoapClient($service_url);
+        try{
+          $result=$client->InsertEvent($args);
+          if($result->InsertEventResult==-1){
+            throw new SoapFault('Error reported from SOAP service',-1);
+          }
+                  
+          watchdog('kv_export',t("Exported nid:!nid as ID !id at Kulturvaerftet"),array('!nid'=>$node->nid,'!id'=>$result->InsertEventResult));
+          drupal_set_message(t('Successfully exported to Kulturvaerftet'));
+        }
+        catch(SoapFault $exception){
+          watchdog('kv_export', t("Exception: @exception"),array('@exception'=>print_r($exception,true)),WATCHDOG_ERROR);
+          watchdog('kv_export', t("Args: @args"),array('@args'=>var_export($args,true)));
+          watchdog('kv_export', t("Request: @request"), array('@request'=>print_r($client->__getLastRequest(),true)));
+        }
+        
+        break;
+      case 'delete':
+        //Setting up web service specific things
+        $service_url=variable_get('helbib_kulturvaerft_export_service_url',false);
+        $username=variable_get('helbib_kulturvaerft_export_username',false);
+        $password=variable_get('helbib_kulturvaerft_export_password',false);
+        if(!$service_url || !$username || !$password ){
+          watchdog('kv_export',t('Did not delete this event, due to missing configuration. Nid: !nid'),array('!nid'=>$node->nid),WATCHDOG_WARNING);
+          drupal_set_message(t('Did not delete this event, due to missing configuration'),'warning');
+          return;
+        }
+        
+        $args=array(
+          'username'=> $username,// string username;
+          'password'=> $password,// string password;
+          'id'=> 0,// int id;
+          'nodeName'=> $nodename ,// string nodeName;
+        );
+        $client=new SoapClient($service_url,array('trace'=>true));
+        try{
+          $result=$client->DeleteEvent($args);
+          if($result->InsertEventResult==-1){
+            throw new SoapFault('Error reported from SOAP service',-1);
+          }
+          
+          watchdog('kv_export',"Deleted nid:!nid as ID !id at Kulturvaerftet",array('!nid'=>$node->nid,'!id'=>$result->InsertEventResult));
+          drupal_set_message(t('Successfully deleted from Kulturvaerftet'));
+        }
+        catch(SoapFault $exception){
+          watchdog('kv_export', "Exception: @exception",array('@exception'=>print_r($exception,true)),WATCHDOG_ERROR);
+          watchdog('kv_export', "Args: @args",array('@args'=>var_export($args,true)));
+          watchdog('kv_export', "Request: @request", array('@request'=>print_r($client->__getLastRequest(),true)));
+        }
+        break;
+    }
+    
+  }
+}
+
+//Extracts definitions of categories etc from XML 
+function _helbib_kulturvaerft_export_get_definitions_values($xml,$path){
+  $xml_list=$xml->xpath("/definitions/$path");
+  $values='';
+  foreach($xml_list as $x) {
+    $att=$x->attributes();
+    $id=(int)$att['id'];
+    $val=(String)$x[0];
+    $values.="$id|$val\n";
+  }
+  $arr=array (
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => $values,
+    'allowed_values_php' => '',
+  );
+  return serialize($arr);
+}
+
+function helbib_kulturvaerft_export_cron(){
+  $definitions_file=variable_get('helbib_kulturvaerft_export_definitions_file',false);
+  if(!$definitions_file){
+    watchdog('kv_export',t('Did not update list of definitions due to missing URL'),array(),WATCHDOG_WARNING);
+    return;
+  }
+
+  $xml=simplexml_load_file($definitions_file);
+  db_query("UPDATE {content_node_field} SET global_settings='%s' WHERE field_name='field_%s'",_helbib_kulturvaerft_export_get_definitions_values($xml,'facilities/facility'),'facility');
+  db_query("UPDATE {content_node_field} SET global_settings='%s' WHERE field_name='field_%s'",_helbib_kulturvaerft_export_get_definitions_values($xml,'categories/category'),'category');
+  db_query("UPDATE {content_node_field} SET global_settings='%s' WHERE field_name='field_%s'",_helbib_kulturvaerft_export_get_definitions_values($xml,'targetgroups/targetgroup'),'targetgroup');
+  watchdog('kv_export',t('Updated list of definitions'));
+}
+
+
+?>
