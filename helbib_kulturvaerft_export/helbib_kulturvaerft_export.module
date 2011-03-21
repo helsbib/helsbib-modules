@@ -60,7 +60,7 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
         $args= array(
           'username'=> $username,// string username;
           'password'=> $password,// string password;
-          'id'=> 0,// int id;
+          //'id'=> 0,// int id;
           'nodeName'=> $nodename ,// string nodeName;
           'title'=> $title ,// string title;
           //'navigationTitle'=> 'navitationstitel' ,// string navigationTitle;
@@ -88,10 +88,9 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
         //$client=new SoapClient($service_url);
         try{
           $result=$client->InsertEvent($args);
-          if($result->InsertEventResult==-1){
+          if(!$result->InsertEventResult){
             throw new SoapFault('Error reported from SOAP service',-1);
           }
-                  
           watchdog('kv_export',t("Exported nid:!nid as ID !id at Kulturvaerftet"),array('!nid'=>$node->nid,'!id'=>$result->InsertEventResult));
           drupal_set_message(t('Successfully exported to Kulturvaerftet'));
         }
@@ -116,13 +115,13 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
         $args=array(
           'username'=> $username,// string username;
           'password'=> $password,// string password;
-          'id'=> 0,// int id;
+          //'id'=> 0,// int id;
           'nodeName'=> $nodename ,// string nodeName;
         );
         $client=new SoapClient($service_url,array('trace'=>true));
         try{
           $result=$client->DeleteEvent($args);
-          if($result->InsertEventResult==-1){
+          if(!$result->DeleteEvent){
             throw new SoapFault('Error reported from SOAP service',-1);
           }
           
