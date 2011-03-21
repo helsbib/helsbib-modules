@@ -90,7 +90,7 @@ function helbib_base_default_page_manager_pages() {
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
-    $pane->subtype = 'library_staff_list-panel_pane_1';
+    $pane->subtype = 'helbib_library_staff_list-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
