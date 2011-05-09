@@ -19,7 +19,7 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
 
         if(!$service_url || !$username || !$password ){
           watchdog('kv_export',t('Did not export this event, due to missing configuration. Nid: !nid'),array('!nid'=>$node->nid),WATCHDOG_WARNING);
-          drupal_set_message(t('Did not export this event, due to missing configuration'),'warning');
+          drupal_set_message(t('Did not export this event to Kulturvaerftet, due to missing configuration'), 'warning');
           return;
         }
 
@@ -91,9 +91,9 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
           'imageUrl'=> $imageUrl // string imageUrl;
         );
         
-        $client=new SoapClient($service_url,array('trace'=>true));
-        //$client=new SoapClient($service_url);
+        $client = false;
         try{
+          $client=new SoapClient($service_url,array('trace'=>true));
           $result=$client->InsertEvent($args);
           if(!$result->InsertEventResult){
             throw new SoapFault('Error reported from SOAP service',-1);
@@ -102,9 +102,12 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
           drupal_set_message(t('Successfully exported to Kulturvaerftet'));
         }
         catch(SoapFault $exception){
+          drupal_set_message(t('An error occured when exporting event to Kulturvaerftet: @message', $exception->getMessage()), 'error');
           watchdog('kv_export', t("Exception: @exception"),array('@exception'=>print_r($exception,true)),WATCHDOG_ERROR);
           watchdog('kv_export', t("Args: @args"),array('@args'=>var_export($args,true)));
-          watchdog('kv_export', t("Request: @request"), array('@request'=>print_r($client->__getLastRequest(),true)));
+          if ($client) {
+            watchdog('kv_export', t("Request: @request"), array('@request'=>print_r($client->__getLastRequest(),true)));
+          }
         }
         
         break;
@@ -115,7 +118,7 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
         $password=variable_get('helbib_kulturvaerft_export_password',false);
         if(!$service_url || !$username || !$password ){
           watchdog('kv_export',t('Did not delete this event, due to missing configuration. Nid: !nid'),array('!nid'=>$node->nid),WATCHDOG_WARNING);
-          drupal_set_message(t('Did not delete this event, due to missing configuration'),'warning');
+          drupal_set_message(t('Did not delete this event from Kulturvaerftet, due to missing configuration'), 'warning');
           return;
         }
         
@@ -125,20 +128,24 @@ function helbib_kulturvaerft_export_nodeapi(&$node, $op){
           //'id'=> 0,// int id;
           'nodeName'=> $nodename ,// string nodeName;
         );
-        $client=new SoapClient($service_url,array('trace'=>true));
+        
+        $client = false;
         try{
+          $client=new SoapClient($service_url,array('trace'=>true));
           $result=$client->DeleteEvent($args);
           if(!$result->DeleteEvent){
             throw new SoapFault('Error reported from SOAP service',-1);
           }
-          
           watchdog('kv_export',"Deleted nid:!nid as ID !id at Kulturvaerftet",array('!nid'=>$node->nid,'!id'=>$result->InsertEventResult));
           drupal_set_message(t('Successfully deleted from Kulturvaerftet'));
         }
         catch(SoapFault $exception){
+          drupal_set_message(t('An error occured when deleting event from Kulturvaerftet: @message', $exception->getMessage()), 'error');
           watchdog('kv_export', "Exception: @exception",array('@exception'=>print_r($exception,true)),WATCHDOG_ERROR);
           watchdog('kv_export', "Args: @args",array('@args'=>var_export($args,true)));
-          watchdog('kv_export', "Request: @request", array('@request'=>print_r($client->__getLastRequest(),true)));
+          if ($client) {
+            watchdog('kv_export', "Request: @request", array('@request'=>print_r($client->__getLastRequest(),true)));
+          }
         }
         break;
     }
