@@ -22,6 +22,10 @@ function helbib_base_form_alter(&$form, $form_state, $form_id) {
     case 'ting_search_form':
       $form['keys']['#title'] = t('Indtast søgeord...');
       $form['keys']['#required'] = FALSE;
+      $form['#prefix'] = '<span class="page-header-search-header">'.t('Search').'</span>';
+    break;
+    case 'user_login_block':
+      $form['#prefix'] = '<span class="page-header-login-form">'.t('Log in').'</span>';
     break;
   }
 }
