@@ -1,0 +1,27 @@
+<?php
+/* 
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+function _helbib_profile_image_update_alt_texts(){
+  $result=array();
+  
+  $query=db_query("SELECT n.nid as nid,n.title as title FROM {node} n WHERE TYPE='profile'");
+  while($row=db_fetch_object($query)){
+    $data=serialize(array('alt'=>$row->title,'title'=>$row->title));
+    $nid=$row->nid;
+    $result[]=update_sql("UPDATE {content_field_image} SET field_image_data='$data' WHERE nid='$nid'");
+  }
+  return $result;
+}
+
+
+/**
+ * Implementation of hook_install().
+ * Sets image alt texts to profile names
+ */
+function helbib_profile_image_update_6001(){
+  return _helbib_profile_image_update_alt_texts();
+}
+
+?>
