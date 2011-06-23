@@ -39,7 +39,7 @@ function helbib_panels_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Forside';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -168,7 +168,7 @@ function helbib_panels_default_page_manager_handlers() {
     $pane->position = 0;
     $display->content['new-6'] = $pane;
     $display->panels['top'][0] = 'new-6';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
@@ -236,7 +236,7 @@ function helbib_panels_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -449,7 +449,7 @@ function helbib_panels_default_page_manager_handlers() {
     $pane->position = 2;
     $display->content['new-9'] = $pane;
     $display->panels['right'][2] = 'new-9';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-3';
   $handler->conf['display'] = $display;
 
@@ -518,7 +518,7 @@ function helbib_panels_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -816,7 +816,7 @@ $display->panel_settings = array(
   ),
 );
 $display->cache = array();
-$display->title = '';
+$display->title = '%node:title';
 $display->content = array();
 $display->panels = array();
   $pane = new stdClass;
@@ -1047,7 +1047,7 @@ $display->panels = array();
   $pane->position = 4;
   $display->content['new-10'] = $pane;
   $display->panels['right'][4] = 'new-10';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
@@ -1116,7 +1116,7 @@ $display->panels = array();
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1348,7 +1348,7 @@ $display->panels = array();
     $pane->position = 0;
     $display->content['new-9'] = $pane;
     $display->panels['top'][0] = 'new-9';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
 
@@ -1409,7 +1409,7 @@ $display->panels = array();
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1513,7 +1513,7 @@ $display->panels = array();
     $pane->position = 1;
     $display->content['new-4'] = $pane;
     $display->panels['right'][1] = 'new-4';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
 
@@ -1550,7 +1550,7 @@ $display->panels = array();
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%term:name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1670,7 +1670,7 @@ $display->panels = array();
     $pane->position = 3;
     $display->content['new-5'] = $pane;
     $display->panels['right'][3] = 'new-5';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
 
@@ -1759,7 +1759,7 @@ $display->panels = array();
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = '%node:title';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -1910,7 +1910,7 @@ $display->panels = array();
     $pane->position = 1;
     $display->content['new-6'] = $pane;
     $display->panels['right'][1] = 'new-6';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
