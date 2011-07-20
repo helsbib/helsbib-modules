@@ -1,4 +1,3 @@
-package = Helbib
 core = "6.x"
 dependencies[] = "strongarm"
 description = "Module handles installing, updating and various tasks for custom modules"
@@ -7,4 +6,5 @@ features[ctools][] = "strongarm:strongarm:1"
 features[variable][] = "webtrends_dcs_id"
 features[variable][] = "webtrends_domain"
 name = "Helbib Base"
+package = "Helsbib!"
 php = "5.x"
