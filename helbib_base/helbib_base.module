@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Implementation of hook_ctools_plugin_api().
- */
-function helbib_base_ctools_plugin_api() {
-  list($module, $api) = func_get_args();
-  if ($module == "page_manager" && $api == "pages_default") {
-    return array("version" => 1);
-  }
-}
-
-/**
  * Implements hook_form_alter
 */
 function helbib_base_form_alter(&$form, $form_state, $form_id) {
@@ -30,3 +20,4 @@ function helbib_base_form_alter(&$form, $form_state, $form_id) {
   }
 }
 
+include_once('helbib_base.features.inc');
