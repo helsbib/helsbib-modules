@@ -35,3 +35,10 @@ function helbib_base_update_6002() {
 function helbib_base_update_6003() {
   drupal_install_modules(array('webtrends'));
 }
+
+/**
+ * Install Helbib content module.
+ */
+function helbib_base_update_6004() {
+  drupal_install_modules(array('helbib_content'));
+}
