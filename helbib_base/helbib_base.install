@@ -42,3 +42,10 @@ function helbib_base_update_6003() {
 function helbib_base_update_6004() {
   drupal_install_modules(array('helbib_content'));
 }
+
+/**
+ * Install Ting Local Bibliography
+ */
+function helbib_base_update_6005() {
+  drupal_install_modules(array('ting_local_bibliography'));
+}
