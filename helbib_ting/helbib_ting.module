@@ -1,0 +1,31 @@
+<?php
+
+function helbib_ting_preprocess_ting_object(&$vars) {
+  $object = $vars['object'];
+
+  // If an object is a part of a collection and the collection exists as
+  // a relation then make the relation a link
+  if (!empty($object->record['dcterms:isPartOf'][''])) {
+    foreach ($object->record['dcterms:isPartOf'][''] as &$isPartOf) {
+      $isPartOf .= ' DK';
+      if (isset($object->relations)) {
+        foreach ($object->relations as $related_object) {
+          // The relation must be a "isPartOfManifestation" type. Since objects
+          // can be related to other objects which the library cannot access we
+          // only show links if:
+          // - the owner id of the related object matches the id of the original object.
+          //   If the library has access to the original item we assume they also have
+          //   access to the other.
+          // - the owner id matches the agency of the library configured in Ding.
+          if ($related_object->relationType == 'isPartOfManifestation' &&
+              ($related_object->ownerId == $object->ownerId ||
+               $related_object->ownerId == variable_get('ting_agency', NULL))) {
+            $isPartOf = l($isPartOf, 'ting/object/' . $object->id,
+                          array('attributes' => array('title' => t('Go to containing item %title', array('%title' => $related_object->title)))));
+            break;
+          }
+        }
+      }
+    }
+  }
+}

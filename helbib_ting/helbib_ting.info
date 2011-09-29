@@ -1,0 +1,5 @@
+core = "6.x"
+dependencies[] = "ting"
+description = "Modifications to search, collections and object provided by Ting."
+name = "Helsbib! Ting"
+package = "Helsbib!"
