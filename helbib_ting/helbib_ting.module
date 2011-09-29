@@ -3,6 +3,21 @@
 function helbib_ting_preprocess_ting_object(&$vars) {
   $object = $vars['object'];
 
+  // Add more information to subjects.
+  if (is_array($object->record['dc:subject']['oss:sort'])) {
+    $object->subjects = array_merge($object->subjects, $object->record['dc:subject']['oss:sort']);
+  }
+
+  // Add spatial information to subjects.
+  if (is_array($object->record['dcterms:spatial']['dkdcplus:DBCF'])) {
+    $object->subjects = array_merge($object->subjects, $object->record['dcterms:spatial']['dkdcplus:DBCF']);
+  }
+
+  // Add temporal information to subjects.
+  if (is_array($object->record['dcterms:temporal']['dkdcplus:DBCP'])) {
+    $object->subjects = array_merge($object->subjects, $object->record['dcterms:temporal']['dkdcplus:DBCP']);
+  }
+
   // If an object is a part of a collection and the collection exists as
   // a relation then make the relation a link
   if (!empty($object->record['dcterms:isPartOf'][''])) {
