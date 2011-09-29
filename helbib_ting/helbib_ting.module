@@ -1,8 +1,33 @@
 <?php
 
 function helbib_ting_preprocess_ting_object(&$vars) {
-  $object = $vars['object'];
+  helbib_ting_object_update($vars['object']);
+}
 
+function helbib_ting_preprocess_ting_collection(&$vars) {
+  helbib_ting_collection_update($vars['collection']);
+}
+
+function helbib_ting_preprocess_ting_search_collection(&$vars) {
+  helbib_ting_collection_update($vars['collection']);
+}
+
+/**
+ * Update the values of a Ting collection based on local rules.
+ */
+function helbib_ting_collection_update(&$collection) {
+  foreach ($collection->objects as $object) {
+    $object = clone $object;
+    helbib_ting_object_update($object);
+    $collection->subjects += $object->subjects;
+  }
+  array_unique($collection->subjects);
+}
+
+/**
+ * Update the values of a Ting object based on local rules.
+ */
+function helbib_ting_object_update(&$object) {
   // Add more information to subjects.
   if (is_array($object->record['dc:subject']['oss:sort'])) {
     $object->subjects = array_merge($object->subjects, $object->record['dc:subject']['oss:sort']);
@@ -11,6 +36,11 @@ function helbib_ting_preprocess_ting_object(&$vars) {
   // Add spatial information to subjects.
   if (is_array($object->record['dcterms:spatial']['dkdcplus:DBCF'])) {
     $object->subjects = array_merge($object->subjects, $object->record['dcterms:spatial']['dkdcplus:DBCF']);
+  }
+  if (is_array($object->record['dcterms:spatial'][''])) {
+    $object->subjects = array_merge($object->subjects, $object->record['dcterms:spatial']['']);
+    // Prevent general spatial terms from apperaring multiple times
+    unset($object->record['dcterms:spatial']['']);
   }
 
   // Add temporal information to subjects.
