@@ -22,7 +22,6 @@ function helbib_ting_preprocess_ting_object(&$vars) {
   // a relation then make the relation a link
   if (!empty($object->record['dcterms:isPartOf'][''])) {
     foreach ($object->record['dcterms:isPartOf'][''] as &$isPartOf) {
-      $isPartOf .= ' DK';
       if (isset($object->relations)) {
         foreach ($object->relations as $related_object) {
           // The relation must be a "isPartOfManifestation" type. Since objects
