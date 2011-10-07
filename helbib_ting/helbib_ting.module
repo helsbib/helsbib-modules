@@ -29,6 +29,9 @@ function helbib_ting_collection_update(&$collection) {
  */
 function helbib_ting_object_update(&$object) {
   // Add more information to subjects.
+  if (is_array($object->record['dc:subject'][''])) {
+    $object->subjects = array_merge($object->subjects, $object->record['dc:subject']['']);
+  }
   if (is_array($object->record['dc:subject']['oss:sort'])) {
     $object->subjects = array_merge($object->subjects, $object->record['dc:subject']['oss:sort']);
   }
@@ -47,6 +50,9 @@ function helbib_ting_object_update(&$object) {
   if (is_array($object->record['dcterms:temporal']['dkdcplus:DBCP'])) {
     $object->subjects = array_merge($object->subjects, $object->record['dcterms:temporal']['dkdcplus:DBCP']);
   }
+
+  // Remove duplicates
+  $object->subjects = array_unique($object->subjects);
 
   // If an object is a part of a collection and the collection exists as
   // a relation then make the relation a link
