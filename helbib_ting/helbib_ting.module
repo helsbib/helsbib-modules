@@ -64,7 +64,7 @@ function helbib_ting_object_update(&$object) {
           if ($related_object->relationType == 'isPartOfManifestation' &&
               ($related_object->ownerId == $object->ownerId ||
                $related_object->ownerId == variable_get('ting_agency', NULL))) {
-            $isPartOf = l($isPartOf, 'ting/object/' . $object->id,
+            $isPartOf = l($isPartOf, 'ting/object/' . $related_object->id,
                           array('attributes' => array('title' => t('Go to containing item %title', array('%title' => $related_object->title)))));
             break;
           }
