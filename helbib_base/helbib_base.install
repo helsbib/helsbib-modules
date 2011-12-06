@@ -56,3 +56,15 @@ function helbib_base_update_6005() {
 function helbib_base_update_6006() {
   drupal_install_modules(array('helbib_ting'));
 }
+
+/**
+ * Enable the header section to the wysiwyg for the full html profile.
+ */
+function helbib_base_update_6007() {
+  $format = db_result(db_query("SELECT f.format FROM {filter_formats} f WHERE f.name = 'Full HTML'"));
+  $result = db_query("SELECT settings FROM {wysiwyg} WHERE format = %d", $format);
+  $settings_obj = db_fetch_object($result);
+  $settings = unserialize($settings_obj->settings);
+  $settings['block_formats'] = 'p,address,pre,h1,h2,h3,h4,h5,h6,div';
+  db_query("UPDATE {wysiwyg} SET settings = '%s' WHERE format = %d", serialize($settings), $format);
+}
