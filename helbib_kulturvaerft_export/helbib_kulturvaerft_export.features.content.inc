@@ -11,29 +11,34 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'field_name' => 'field_category',
     'type_name' => 'event',
     'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
+      'weight' => '27',
+      'parent' => '',
       '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      '4' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'mobile' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       'token' => array(
         'format' => 'default',
@@ -85,29 +90,34 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'field_name' => 'field_export_image',
     'type_name' => 'event',
     'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
-      ),
+      'weight' => '29',
+      'parent' => '',
       '2' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       '3' => array(
-        'format' => 'image_plain',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      '4' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'mobile' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       'token' => array(
         'format' => 'image_plain',
@@ -166,29 +176,34 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'field_name' => 'field_facility',
     'type_name' => 'event',
     'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
+      'weight' => '26',
+      'parent' => '',
       '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      '4' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'mobile' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       'token' => array(
         'format' => 'default',
@@ -244,29 +259,34 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'field_name' => 'field_targetgroup',
     'type_name' => 'event',
     'display_settings' => array(
-      'label' => array(
-        'format' => 'above',
-        'exclude' => 0,
-      ),
-      'teaser' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      'full' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
-      '4' => array(
-        'format' => 'default',
-        'exclude' => 0,
-      ),
+      'weight' => '28',
+      'parent' => '',
       '2' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       '3' => array(
-        'format' => 'default',
-        'exclude' => 0,
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      '4' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'mobile' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 1,
       ),
       'token' => array(
         'format' => 'default',
