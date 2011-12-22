@@ -1,15 +1,13 @@
-name = Helbib Export kulturvaerftet
-description = Helbib Export kulturvaerftet
-core = 6.x
-
-dependencies[] = "features"
+core = "6.x"
 dependencies[] = "ding_event"
+dependencies[] = "features"
 dependencies[] = "imagefield"
 dependencies[] = "optionwidgets"
 dependencies[] = "text"
-
+description = "Helbib Export kulturvaerftet"
 features[content][] = "event-field_category"
 features[content][] = "event-field_export_image"
 features[content][] = "event-field_facility"
 features[content][] = "event-field_targetgroup"
+name = "Helbib Export kulturvaerftet"
 package = "Helsbib!"

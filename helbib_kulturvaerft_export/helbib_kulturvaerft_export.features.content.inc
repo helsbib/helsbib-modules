@@ -48,17 +48,21 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => '1076|Koncert
-1077|Foredrag & Debat
-1078|Udstilling
+    'allowed_values' => '1076|Musik
 1124|Teater
+1325|Show
+2669|Event
+1078|Udstilling
+1468|Litteratur
 1127|Dans
-1493|Musik
-1494|Brunch +
-1495|Show
-1496|Kurser & Webshops
-1498|Film
-1499|Litteratur
+1077|Foredrag & Debat
+1383|Kurser & Workshops
+1467|Film
+1470|Familieliv
+2012|Rundvisninger
+1251|Brunch +
+3928|Nyhed
+4851|Møde & Konference
 ',
     'allowed_values_php' => '',
     'widget' => array(
@@ -199,12 +203,25 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => '1464|Arkaden
-1238|Lille sal
-1341|Ny sal
-1117|Store sal
-1463|Store scene
-1475|test (1)
+    'allowed_values' => '1638|Arkaden
+1553|Biblioteket 1. etage
+1275|Biblioteket 2. etage
+1939|Biblioteket 3. etage
+1280|Foyer
+1276|Green Room
+1938|Grotten
+1937|Hulen
+1278|Krydsfeltet
+1370|Kulturværftets Spisehus
+1258|Lille Scene
+1697|Møde- og konferenceområde
+1338|Prismen
+3813|Røde Plads
+2113|Sekretariatet
+1242|Store Scene
+1695|Terrassen
+2651|Toldkammeret
+1277|Værftsmuseet
 ',
     'allowed_values_php' => '',
     'widget' => array(
@@ -264,14 +281,14 @@ function helbib_kulturvaerft_export_content_default_fields() {
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => '1459|Børn & unge
-1091|Familie
+    'allowed_values' => '1091|Familien
 1092|Unge
-1488|Ældre
-1489|Voksne
-1490|Gratis-arrangementer
-1491|Tema-arrangemmenter
-1492|Sær-arrangementer
+1252|Børn
+1253|Ældre
+1335|Gratis-arrangementer
+1256|Voksne
+1471|Tema-arrangementer
+1472|Sær-arrangementer
 ',
     'allowed_values_php' => '',
     'widget' => array(
