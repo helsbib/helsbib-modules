@@ -1,5 +1,8 @@
 core = "6.x"
+dependencies[] = "strongarm"
 dependencies[] = "ting"
 description = "Modifications to search, collections and object provided by Ting."
+features[ctools][] = "strongarm:strongarm:1"
+features[variable][] = "addi_wsdl_url"
 name = "Helsbib! Ting"
 package = "Helsbib!"
