@@ -42,11 +42,6 @@ projects[alternator][download][url] = http://github.com/helsbib/alternator.git
 
 ; Custom Ding-modules and themes.
 
-projects[ting_local_bibliography][type] = module
-projects[ting_local_bibliography][download][type] = git
-projects[ting_local_bibliography][download][url] = https://github.com/helsbib/ting-local-bibliography
-projects[ting_local_bibliography][download][revision] = v1.0.1
-
 projects[elsinore][type] = theme
 projects[elsinore][download][type] = git
 projects[elsinore][download][url] = https://github.com/helsbib/elsinore.git
@@ -54,3 +49,8 @@ projects[elsinore][download][url] = https://github.com/helsbib/elsinore.git
 projects[melsinore][type] = theme
 projects[melsinore][download][type] = git
 projects[melsinore][download][url] = https://github.com/helsbib/melsinore.git
+
+projects[ting_local_bibliography][type] = module
+projects[ting_local_bibliography][download][type] = git
+projects[ting_local_bibliography][download][url] = https://github.com/helsbib/ting-local-bibliography
+projects[ting_local_bibliography][download][revision] = v1.0.1
