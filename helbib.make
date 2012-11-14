@@ -12,6 +12,9 @@ projects[memcache][version] = 1.10
 projects[node_export][subdir] = contrib
 projects[node_export][version] = 2.21
 
+projects[scheduler][subdir] = contrib
+projects[scheduler][version] = 1.8
+
 projects[securepages][subdir] = contrib
 projects[securepages][version] = 1.8
 projects[securepages][patch][] = http://drupal.org/files/issues/globalbase_url_6.x-1.8.patch
@@ -37,11 +40,7 @@ projects[alternator][download][url] = http://github.com/helsbib/alternator.git
 ;projects[alternator][download][revision] = v1.0
 
 
-; Custom Ding-modules and themest.
-
-projects[helbib][type] = module
-projects[helbib][download][type] = git
-projects[helbib][download][url] = https://github.com/helsbib/helsbib-modules.git
+; Custom Ding-modules and themes.
 
 projects[ting_local_bibliography][type] = module
 projects[ting_local_bibliography][download][type] = git
