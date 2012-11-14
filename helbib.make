@@ -6,6 +6,9 @@ core = 6.x
 projects[addthis][subdir] = contrib
 projects[addthis][version] = 2.10
 
+projects[eu-cookie-compliance][subdir] = contrib
+projects[eu-cookie-compliance][version] = 1.8
+
 projects[flag][subdir] = contrib
 projects[flag][version] = 2.0
 
