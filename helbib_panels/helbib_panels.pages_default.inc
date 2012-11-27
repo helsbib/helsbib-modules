@@ -175,10 +175,10 @@ function helbib_panels_default_page_manager_handlers() {
   $export['page_front_panel_panel_context_2'] = $handler;
 
   // NODE LIBRARY
-  $handler = new stdClass;
+  $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_10';
+  $handler->name = 'node_view_panel_heslbib_library_portal';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -189,14 +189,14 @@ function helbib_panels_default_page_manager_handlers() {
     'no_blocks' => 0,
     'css_id' => '',
     'css' => '.orangebox  {
-    border-style: dotted;
-    border-width: 1px;
-    border-color: #cc6600;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-  }',
+      border-style: dotted;
+      border-width: 1px;
+      border-color: #cc6600;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 10px;
+    }',
     'css_cache_file' => '',
     'contexts' => array(),
     'relationships' => array(),
@@ -222,7 +222,6 @@ function helbib_panels_default_page_manager_handlers() {
     'pipeline' => 'standard',
   );
   $display = new panels_display;
-  $display->api_version = 1;
   $display->layout = 'basepage';
   $display->layout_settings = array();
   $display->panel_settings = array(
@@ -240,7 +239,6 @@ function helbib_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-1';
     $pane->panel = 'left';
     $pane->type = 'library_title';
@@ -265,7 +263,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-1'] = $pane;
     $display->panels['left'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-2';
     $pane->panel = 'left';
     $pane->type = 'node_body';
@@ -287,7 +284,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-2'] = $pane;
     $display->panels['left'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-3';
     $pane->panel = 'left';
     $pane->type = 'library_portal';
@@ -310,7 +306,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-3'] = $pane;
     $display->panels['left'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-4';
     $pane->panel = 'middle';
     $pane->type = 'library';
@@ -332,7 +327,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-4'] = $pane;
     $display->panels['middle'][0] = 'new-4';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-5';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
@@ -357,7 +351,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-5'] = $pane;
     $display->panels['middle'][1] = 'new-5';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-6';
     $pane->panel = 'middle';
     $pane->type = 'relevant';
@@ -384,7 +377,6 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-6'] = $pane;
     $display->panels['middle'][2] = 'new-6';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-7';
     $pane->panel = 'right';
     $pane->type = 'library';
@@ -406,30 +398,26 @@ function helbib_panels_default_page_manager_handlers() {
     $display->content['new-7'] = $pane;
     $display->panels['right'][0] = 'new-7';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-8';
     $pane->panel = 'right';
-    $pane->type = 'library';
-    $pane->subtype = 'library_hours';
+    $pane->type = 'week';
+    $pane->subtype = 'week';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
+      'hide_if_empty' => 0,
       'context' => 'argument_nid_1',
-      'override_title' => 0,
-      'override_title_text' => '',
+      'override_title' => 1,
+      'override_title_text' => 'Åbningstider',
     );
     $pane->cache = array();
-    $pane->style = array(
-      'style' => 'ding_box',
-      'settings' => NULL,
-    );
+    $pane->style = array();
     $pane->css = array();
     $pane->extras = array();
     $pane->position = 1;
     $display->content['new-8'] = $pane;
     $display->panels['right'][1] = 'new-8';
     $pane = new stdClass;
-    $pane->api_version = 1;
     $pane->pid = 'new-9';
     $pane->panel = 'right';
     $pane->type = 'block';
@@ -453,7 +441,7 @@ function helbib_panels_default_page_manager_handlers() {
   $display->title_pane = 'new-3';
   $handler->conf['display'] = $display;
 
-  $export['node_view_panel_context_10'] = $handler;
+  $export['node_view_panel_heslbib_library_portal'] = $handler;
 
   // Article / Node pane
   $handler = new stdClass;
