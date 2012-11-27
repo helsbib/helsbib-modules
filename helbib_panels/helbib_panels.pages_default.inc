@@ -178,7 +178,7 @@ function helbib_panels_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_heslbib_library_portal';
+  $handler->name = 'node_view_helsbib_library_portal';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -441,7 +441,7 @@ function helbib_panels_default_page_manager_handlers() {
   $display->title_pane = 'new-3';
   $handler->conf['display'] = $display;
 
-  $export['node_view_panel_heslbib_library_portal'] = $handler;
+  $export['node_view_helsbib_library_portal'] = $handler;
 
   // Article / Node pane
   $handler = new stdClass;
