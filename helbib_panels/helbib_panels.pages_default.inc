@@ -182,7 +182,7 @@ function helbib_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -37;
+  $handler->weight = -29;
   $handler->conf = array(
     'autogenerate_title' => TRUE,
     'title' => 'Helsbib Portal library',
@@ -1301,7 +1301,7 @@ $display->panels = array();
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -35;
+  $handler->weight = -29;
   $handler->conf = array(
     'autogenerate_title' => TRUE,
     'title' => 'Helsbib Facility/service',
