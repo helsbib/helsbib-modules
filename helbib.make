@@ -48,6 +48,11 @@ projects[alternator][download][url] = http://github.com/helsbib/alternator.git
 
 ; Custom Ding-modules and themes.
 
+projects[ding-library-hours][type] = module
+projects[ding-library-hours][download][type] = git
+projects[ding-library-hours][download][url] = https://github.com/kdb/ding-library-hours.git
+projects[ding-library-hours][download][revision] = v1.1.0
+
 projects[elsinore][type] = theme
 projects[elsinore][download][type] = git
 projects[elsinore][download][url] = https://github.com/helsbib/elsinore.git
