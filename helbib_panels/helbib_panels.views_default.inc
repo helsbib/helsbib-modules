@@ -2342,6 +2342,449 @@ function helbib_panels_views_default_views() {
 
   $views[$view->name] = $view;
 
+  // Exported view: helbib_frontpage_blog
+  $view = new view;
+  $view->name = 'helbib_frontpage_blog';
+  $view->description = 'List of articles and events promoted to the front page.';
+  $view->tag = '';
+  $view->base_table = 'node';
+  $view->core = 6;
+  $view->api_version = '2';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+  $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('fields', array(
+    'tid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+      ),
+      'type' => 'separator',
+      'separator' => ', ',
+      'empty' => '',
+      'link_to_taxonomy' => 1,
+      'limit' => 1,
+      'vids' => array(
+        1 => 1,
+        3 => 0,
+        2 => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'tid',
+      'table' => 'term_node',
+      'field' => 'tid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'link_to_node' => 1,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_library_ref_nid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => 1,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'field_library_ref_nid',
+      'table' => 'node_data_field_library_ref',
+      'field' => 'field_library_ref_nid',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'created' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'date_format' => 'custom',
+      'custom_date_format' => 'j. F Y',
+      'exclude' => 0,
+      'id' => 'created',
+      'table' => 'node',
+      'field' => 'created',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'name' => array(
+      'label' => 'af',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+      ),
+      'link_to_user' => 1,
+      'overwrite_anonymous' => 0,
+      'anonymous_text' => '',
+      'exclude' => 0,
+      'id' => 'name',
+      'table' => 'users',
+      'field' => 'name',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_teaser_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+      ),
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_teaser_value',
+      'table' => 'node_data_field_teaser',
+      'field' => 'field_teaser_value',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'view_node' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'text' => 'Mere',
+      'exclude' => 0,
+      'id' => 'view_node',
+      'table' => 'node',
+      'field' => 'view_node',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+    'comment_count' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'set_precision' => FALSE,
+      'precision' => 0,
+      'decimal' => '.',
+      'separator' => ',',
+      'prefix' => '',
+      'suffix' => '',
+      'exclude' => 0,
+      'id' => 'comment_count',
+      'table' => 'node_comment_statistics',
+      'field' => 'comment_count',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'edit_node' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'strip_tags' => 0,
+        'html' => 0,
+      ),
+      'text' => '',
+      'exclude' => 0,
+      'id' => 'edit_node',
+      'table' => 'node',
+      'field' => 'edit_node',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+    'field_list_image_fid' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'absolute' => 0,
+        'link_class' => '',
+        'alt' => '',
+        'rel' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide_alter_empty' => 1,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => '120_120_linked',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_list_image_fid',
+      'table' => 'node_data_field_list_image',
+      'field' => 'field_list_image_fid',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('sorts', array(
+    'sticky' => array(
+      'order' => 'DESC',
+      'id' => 'sticky',
+      'table' => 'node',
+      'field' => 'sticky',
+      'relationship' => 'none',
+    ),
+    'created' => array(
+      'order' => 'DESC',
+      'granularity' => 'second',
+      'id' => 'created',
+      'table' => 'node',
+      'field' => 'created',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'article' => 'article',
+        'event' => 'event',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'promote' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'promote',
+      'table' => 'node',
+      'field' => 'promote',
+      'override' => array(
+        'button' => 'Tilsidesæt',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('access', array(
+    'type' => 'perm',
+    'perm' => 'access content',
+  ));
+  $handler->override_option('cache', array(
+    'type' => 'rules',
+  ));
+  $handler->override_option('empty', 'Ingen blogindlæg fundet.');
+  $handler->override_option('empty_format', '1');
+  $handler->override_option('use_pager', '1');
+  $handler->override_option('use_more_text', 'Se alle indlæg');
+  $handler->override_option('style_plugin', 'list');
+  $handler->override_option('style_options', array(
+    'type' => 'ul',
+  ));
+  $handler = $view->new_display('panel_pane', 'Frontpage blog and event pane', 'panel_pane_3');
+  $handler->override_option('items_per_page', 5);
+  $handler->override_option('pane_title', 'Frontpage blog and events');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'View panes',
+    'weight' => 0,
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array());
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
+
+  $views[$view->name] = $view;
+
   // Exported view: helbib_library_staff_list
   $view = new view;
   $view->name = 'helbib_library_staff_list';
