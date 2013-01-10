@@ -10,7 +10,7 @@ projects[eu-cookie-compliance][subdir] = contrib
 projects[eu-cookie-compliance][version] = 1.8
 
 projects[flag][subdir] = contrib
-projects[flag][version] = 2.0
+projects[flag][version] = 2.1
 
 projects[memcache][subdir] = contrib
 projects[memcache][version] = 1.10
