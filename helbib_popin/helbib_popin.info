@@ -1,0 +1,6 @@
+name = "Helbib Popin"
+description = "Code for the week 6 user survey."
+core = "6.x"
+package = "Helsbib!"
+php = "5.x"
+

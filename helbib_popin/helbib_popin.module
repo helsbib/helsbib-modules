@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * Implements code for a popin user survey.
+ */
+
+/**
+ * Implements hook_init().
+ *
+ * Add the needed code to head.
+ */
+function helbib_popin_init() {
+  $head_code = <<<EOI
+<link rel="stylesheet" type="text/css" href="http://popin.survey-xact.dk/popin/popin.css" />
+<script type="text/javascript" src="http://popin.survey-xact.dk/popin/popin.js"></script>
+<script type="text/javascript" src="http://popin.survey-xact.dk/dynjs/Z6QJ5GLE3231/popin.js"></script>
+<script type="text/javascript" src="http://popin.survey-xact.dk/cookies.js"></script>
+EOI;
+  drupal_set_html_head($head_code);
+}
+
+/**
+ * Implements hook_footer().
+ *
+ * Add the needed code to body.
+ */
+function helbib_popin_footer($main = 0) {
+  $footer_code = <<<EOI
+<script type="text/javascript">
+   window.xact_width=400;
+   window.xact_height=400;
+   window.xact_surveyURL='http://www.survey-xact.dk/LinkCollector?key=Z6QJ5GLE3231';
+   window.xact_surveyKey='Z6QJ5GLE3231';
+   window.xact_probability = 1;
+   window.xact_baseURL = 'http://www.survey-xact.dk';
+   window.xact_language = "da";
+   xact_startPopIn();
+</script>
+EOI;
+
+   return $footer_code;
+}
