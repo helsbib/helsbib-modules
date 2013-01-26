@@ -1,6 +1,6 @@
-core = "6.x"
-dependencies[] = "ding_content"
-dependencies[] = "ding_page"
-description = "Modifications to the Ding-related content types."
-name = "Helsbib! content"
-package = "Helsbib!"
+name = Helsbib! content
+description = Modifications to the Ding-related content types.
+package = Helsbib!
+core = 6.x
+dependencies[] = ding_content
+dependencies[] = ding_page
