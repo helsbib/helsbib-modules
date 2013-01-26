@@ -11,3 +11,5 @@ function helbib_content_content_default_fields_alter(&$fields) {
     }
   }
 }
+
+require 'helbib_content.features.inc';

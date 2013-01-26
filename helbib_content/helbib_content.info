@@ -1,6 +1,8 @@
 name = Helsbib! content
 description = Modifications to the Ding-related content types.
-package = Helsbib!
 core = 6.x
+package = Helsbib!
+dependencies[] = cache_actions
 dependencies[] = ding_content
 dependencies[] = ding_page
+features[rules_categories][] = helsbib_content
