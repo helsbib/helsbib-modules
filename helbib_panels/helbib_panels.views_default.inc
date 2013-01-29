@@ -2802,6 +2802,7 @@ function helbib_panels_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'rules',
   ));
+  $handler->override_option('css_class', 'view-article-list');
   $handler->override_option('empty', 'Ingen blogindlæg fundet.');
   $handler->override_option('empty_format', '1');
   $handler->override_option('use_pager', '1');
