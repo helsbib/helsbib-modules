@@ -28,24 +28,6 @@ projects[securepages][patch][] = http://drupal.org/files/issues/globalbase_url_6
 projects[tinymce_node_picker][subdir] = contrib
 projects[tinymce_node_picker][version] = 2.1
 
-; Ding mobile.
-
-projects[ding-mobile][type] = module
-projects[ding-mobile][download][type] = git
-projects[ding-mobile][download][url] = https://github.com/helsbib/ding-mobile.git
-
-projects[mobile_tools][subdir] = contrib
-projects[mobile_tools][version] = 2.7
-
-projects[browscap][subdir] = contrib
-projects[browscap][version] = 1.5
-
-projects[alternator][type] = theme
-projects[alternator][download][type] = git
-projects[alternator][download][url] = http://github.com/helsbib/alternator.git
-;projects[alternator][download][revision] = v1.0
-
-
 ; Custom Ding-modules and themes.
 
 projects[ding-library-hours][type] = module
