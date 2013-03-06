@@ -1858,7 +1858,7 @@ $display->panels = array();
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_14';
+  $handler->name = 'node_view_panel_helsbib_page_default';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
@@ -2093,7 +2093,7 @@ $display->panels = array();
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
 
-  $export['node_view_panel_context_14'] = $handler;
+  $export['node_view_panel_helsbib_page_default'] = $handler;
 
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
