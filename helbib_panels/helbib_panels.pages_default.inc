@@ -2098,6 +2098,151 @@ $display->panels = array();
   $handler = new stdClass;
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'node_view_panel_helsbib_page_child_event';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -24;
+  $handler->conf = array(
+    'autogenerate_title' => TRUE,
+    'title' => 'Helsbib Page node with child events',
+    'no_blocks' => 0,
+    'css_id' => '',
+    'css' => '',
+    'css_cache_file' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'context' => 'argument_nid_1',
+        'name' => 'related_library',
+        'id' => 2,
+        'identifier' => 'Library node',
+        'keyword' => 'related_library',
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'perm',
+          'settings' => array(
+            'perm' => 'access content',
+          ),
+          'context' => 'logged-in-user',
+        ),
+        1 => array(
+          'name' => 'helsbib_page_type',
+          'settings' => array(
+            'helsbib_page_type' => 'child_event',
+          ),
+          'context' => 'argument_nid_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+    'pipeline' => 'standard',
+  );
+  $display = new panels_display;
+  $display->layout = 'subpage';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'top' => NULL,
+      'left' => NULL,
+      'middle' => NULL,
+      'right' => NULL,
+      'bottom' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%node:title';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass;
+    $pane->pid = 'new-1';
+    $pane->panel = 'left';
+    $pane->type = 'node_content';
+    $pane->subtype = 'node_content';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'links' => 0,
+      'page' => 1,
+      'no_extras' => 0,
+      'override_title' => 0,
+      'override_title_text' => '',
+      'identifier' => '',
+      'link' => 0,
+      'leave_node_title' => 0,
+      'context' => 'argument_nid_1',
+      'build_mode' => 'full',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['left'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'helsbib_event_list-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'items_per_page' => '10',
+      'arguments' => array(
+        'tid' => '22',
+      ),
+      'override_title' => 1,
+      'override_title_text' => 'Arrangementer for børn',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => 'event-list',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-2'] = $pane;
+    $display->panels['right'][0] = 'new-2';
+    $pane = new stdClass;
+    $pane->pid = 'new-3';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'addthis-0';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '<none>',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-3'] = $pane;
+    $display->panels['right'][1] = 'new-3';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+
+  $export['node_view_panel_helsbib_page_child_event'] = $handler;
+
+  $handler = new stdClass;
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'page_events_overview_panel_context_2';
   $handler->task = 'page';
   $handler->subtask = 'events_overview';

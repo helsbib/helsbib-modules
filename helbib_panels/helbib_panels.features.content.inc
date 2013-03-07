@@ -190,7 +190,8 @@ function helbib_panels_content_default_fields() {
     'text_processing' => '0',
     'max_length' => '',
     'allowed_values' => 'standard|Almindelig
-navigation|Fordelingsside',
+navigation|Fordelingsside
+child_event|Side med børnearrangementer',
     'allowed_values_php' => '',
     'widget' => array(
       'default_value' => array(
