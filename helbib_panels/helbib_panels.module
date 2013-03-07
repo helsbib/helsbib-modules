@@ -1,12 +1,15 @@
 <?php
-
-include_once 'helbib_panels.features.inc';
+/**
+ * @file
+ * Helsbib-specific customisations for Panels.
+ */
 
 /**
  * Implements hook_ctools_plugin_api()
  */
 function helbib_panels_ctools_plugin_api() {
   list($module, $api) = func_get_args();
+
   if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => 1);
   }
@@ -14,3 +17,16 @@ function helbib_panels_ctools_plugin_api() {
     return array("version" => 1);
   }
 }
+
+/**
+ * Implementation of hook_ctools_plugin_directory().
+ *
+ * Tells CTools (and thus Panels) where to look for plugin code.
+ */
+function helbib_panels_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools' || $module == 'panels') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+include_once 'helbib_panels.features.inc';
