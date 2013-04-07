@@ -2736,6 +2736,16 @@ function helbib_panels_views_default_views() {
       'field' => 'sticky',
       'relationship' => 'none',
     ),
+    'type' => array(
+      'order' => 'ASC',
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'override' => array(
+        'button' => 'Tilsidesæt',
+      ),
+      'relationship' => 'none',
+    ),
     'created' => array(
       'order' => 'DESC',
       'granularity' => 'second',
