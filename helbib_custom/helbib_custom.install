@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * Installs and configure tinymce_node_picker module to be enabled on Full HTML
+ * wysiwyg editors.
+ */
+/*function helbib_custom_update_6001() {
+
+  // Install the tinymce node picker module
+  drupal_install_modules(array('tinymce_node_picker'));
+
+  $result = db_query("SELECT w.settings, f.format FROM {wysiwyg} AS w LEFT JOIN {filter_formats} f ON f.format = w.format WHERE f.name = 'Full HTML'");
+
+  $settings_obj = db_fetch_object($result);
+  $settings     = unserialize($settings_obj->settings);
+
+  if (!array_key_exists('drupal', $settings['buttons'])) {
+    $settings['buttons']['drupal']['nodepicker'] = 1;
+    db_query("UPDATE {wysiwyg} SET settings = '%s' WHERE format = %d", serialize($settings), $settings_obj->format);
+
+    drupal_set_message(t('Wysiwyg profile for Full HTML has been saved.'));
+  }
+}*/
+
+/**
+ * Install and enable helbib_profile_image module, which adds a profile image cck field to the profile
+ */
+/*function helbib_custom_update_6002() {
+  drupal_install_modules(array('helbib_profile_image'));
+}*/
+
+/**
+ * Install Webtrends module.
+ */
+/*function helbib_custom_update_6003() {
+  drupal_install_modules(array('webtrends'));
+}*/
+
+/**
+ * Install Helbib content module.
+ */
+/*function helbib_custom_update_6004() {
+  drupal_install_modules(array('helbib_content'));
+}*/
+
+/**
+ * Install Ting local bibliography module.
+ */
+function helbib_custom_update_6005() {
+  drupal_install_modules(array('ting_local_bibliography'));
+}
+
+/**
+ * Install Helbib ting module.
+ */
+/*function helbib_custom_update_6006() {
+  drupal_install_modules(array('helbib_ting'));
+}*/
+
+/**
+ * Enable the header section to the wysiwyg for the full html profile.
+ */
+/*function helbib_custom_update_6007() {
+  $format = db_result(db_query("SELECT f.format FROM {filter_formats} f WHERE f.name = 'Full HTML'"));
+  $result = db_query("SELECT settings FROM {wysiwyg} WHERE format = %d", $format);
+  $settings_obj = db_fetch_object($result);
+  $settings = unserialize($settings_obj->settings);
+  $settings['block_formats'] = 'p,address,pre,h1,h2,h3,h4,h5,h6,div';
+  db_query("UPDATE {wysiwyg} SET settings = '%s' WHERE format = %d", serialize($settings), $format);
+}*/

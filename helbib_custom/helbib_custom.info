@@ -1,0 +1,5 @@
+name = "Helbib custom"
+description = "Module handles overwriting functions in custom modules"
+core = "6.x"
+package = "Helsbib!"
+php = "5.x"

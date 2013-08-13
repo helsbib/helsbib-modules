@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * Implements hook_form_alter
+*/
+function helbib_custom_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id) {
+    case 'ting_search_form':
+      $form['keys']['#title'] = t('Søg efter forfatter, titel eller andet');
+      $form['keys']['#required'] = FALSE;
+      //$form['#prefix'] = '<span class="page-header-search-header">'.t('Search').'</span>';
+    break;
+    case 'user_login_block':
+      $form['#prefix'] = '<span class="page-header-login-form">'.t('Log in').'</span>';
+    break;
+  }
+}
+/**
+ * Implementation of hook_menu().
+ */
+function helbib_custom_menu() {
+  $items = array();
+
+  $items['admin/settings/ding/eventcron'] = array(
+    'title' => 'Events unpublishing settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('helbib_custom_event_cron_settings_form'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'helbib_custom.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function helbib_custom_cron() {
+
+  // We check and unpublish expired-items at every cron-run.
+  _helbib_custom_cron_unpublish_callback();
+}
+
+/**
+ * Function _helbib_custom_cron_unpublish_callback().
+ */
+function _helbib_custom_cron_unpublish_callback() {
+  // Get unpublic event time: default 3 hours.
+  $unpublish_time = variable_get('helbib_custom_unpublish_efter_time', 3);
+  //error_log('unpublish time => '.$unpublish_time, 3, '/data/www/helsbib.stg/sites/all/modules/helbib_custom/test.log' );
+
+  // CCK field name for the date/time field on event nodes.
+  $fieldname = 'field_datetime';
+
+  $field = content_fields('field_datetime', 'event');
+  $dbinfo = content_database_info($field);
+  $colname = $dbinfo['columns']['value2']['column'];
+
+  $today = date("Y-m-d").' 00:00:00';
+  $time = strtotime ($today);
+  $query = db_query('
+    SELECT * FROM {node} AS n
+    INNER JOIN ' . $dbinfo['table'] . ' AS cte ON (n.vid = cte.vid)
+    WHERE ' . $colname . ' IS NOT NULL
+    AND ' . $colname . '< date_sub(CURRENT_TIMESTAMP, INTERVAL ' . $unpublish_time . ' DAY_HOUR) 
+    AND ' . $colname . ' <> "' . $today . '"
+    AND n.status = 1
+  ');
+
+  $nids = array();
+  while ($nid = db_result($query)) {
+    $nids[] = $nid;
+
+  }
+
+  if (count($nids) < 1) {
+    watchdog('ding_event', 'There are no outdated events that need to be unpublished.');
+  }
+  else {
+    watchdog('ding_event', 'Found @num outdated events that will be unpublished.', array(
+      '@num' => count($nids),
+    ));
+    db_query('UPDATE {node} SET status = 0 WHERE nid IN (' .  implode(',', $nids) . ')');
+  }
+}
+
